@@ -1,4 +1,4 @@
-# InfoCasas Frontend Challenge
+# To Do list
 
 _Web application that allows users to list a list of tasks, add new ones, delete and update them._
 
