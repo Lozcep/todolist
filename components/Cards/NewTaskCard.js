@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Button } from "@chakra-ui/react"
 
 const NewTaskCard = (props) => {
   const { handleSummit, setNewTask } = props;
@@ -16,12 +17,12 @@ const NewTaskCard = (props) => {
       />
 
       <div className="task-card-button">
-        <button className="btn btn-primary" onClick={handleClick}>
+        <Button  onClick={handleClick}>
           Agregar tarea
-        </button>
-        <button className="btn btn-danger" onClick={() => setNewTask(false)}>
+        </Button>
+        <Button onClick={() => setNewTask(false)}>
           Cancelar
-        </button>
+        </Button>
       </div>
     </div>
   );

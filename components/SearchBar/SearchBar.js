@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { Input } from "@chakra-ui/react";
 
 const SearchBar = (props) => {
   const { perFiltered } = props;
 
   return (
-    <input
-      className="form-control form-control-lg mb-3"
+    <Input
+      color="Black"
+      borderRadius="28px"
       placeholder="Buscar tarea"
       onChange={(e) => {
         perFiltered(e.target.value);

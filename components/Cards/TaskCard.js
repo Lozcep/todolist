@@ -1,4 +1,6 @@
+import { Flex, Checkbox, Input } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { MdCreate, MdDelete, MdDone, MdClose } from "react-icons/md";
 
 const TaskCard = (props) => {
   const {
@@ -29,57 +31,59 @@ const TaskCard = (props) => {
   return (
     <>
       {!edit && (
-        <div className="card mb-4 p-3">
-          <div className="d-flex justify-content-between">
-            <h5 className="card-title">{title}</h5>
-            <input
-              className="form-check-input"
-              type="checkbox"
-              checked={status}
-              onChange={handleCheck}
-            />
-          </div>
-          <div className="task-card-button">
-            <button className="btn btn-primary" onClick={() => setEdit(true)}>
-              Editar
-            </button>
-
-            <button
-              className="btn btn-danger"
-              onClick={() => handleDelete(id, index)}
-            >
-              Eliminar
-            </button>
-          </div>
-        </div>
+        <Flex margin="10px">
+          <Checkbox
+          colorScheme="green"
+            
+            checked={status}
+            onChange={handleCheck}
+          />
+          <h5>{title}</h5>
+          <MdCreate size="25px" color="#6C6C6C" onClick={() => setEdit(true)} />
+          <MdDelete
+            size="25px"
+            color="#6C6C6C"
+            onClick={() => handleDelete(id, index)}
+          />
+        </Flex>
       )}
 
       {edit && (
-        <div className="card mb-3 p-3">
-          <input
+        <Flex margin="10px">
+          <Input
+          color="Black"
             defaultValue={title}
             className="form-control form-control-lg"
             onChange={(e) => {
               setQueryTitle(e.target.value);
             }}
           />
-          <div className="task-card-button">
-            <button
-              className="btn btn-primary"
+        
+            <MdDone
+              size="25px"
+              color="#6C6C6C"
               onClick={() =>
                 handleUpdate(title, queryTitle, id, index, setEdit)
               }
-            >
-              Actualizar
-            </button>
-            <button className="btn btn-danger" onClick={() => setEdit(false)}>
-              Cancelar
-            </button>
-          </div>
-        </div>
+            />
+            <MdClose
+              size="25px"
+              color="#6C6C6C"
+              onClick={() => setEdit(false)}
+            />
+         
+        </Flex>
       )}
     </>
   );
 };
 
 export default TaskCard;
+
+/* 
+<input
+type="checkbox"
+checked={status}
+onChange={handleCheck}
+/>
+ */

@@ -3,6 +3,7 @@ import NewTaskCard from "../components/Cards/NewTaskCard";
 import TaskCard from "../components/Cards/TaskCard";
 import SearchBar from "../components/SearchBar/SearchBar";
 import Spinner from "../components/Spinner/Spinner";
+import { Box, Button, Flex } from "@chakra-ui/react";
 
 const { NEXT_PUBLIC_API_URL } = process.env;
 
@@ -114,29 +115,41 @@ const index = ({ data }) => {
   };
 
   return (
-    <div className="card p-3">
-      <h1 className="d-flex justify-content-center">Lista de Tareas</h1>
+    <Flex 
+    flexDirection={"column"}
+    align="center"    
+     >
+    <Box 
+    background="white" 
+    height="100%"
+    width="70%"
+    >
+      <Flex flexDirection={"column"}
+      align={"center"} >
+
+      <h1>Lista de tareas</h1>
+      <Flex pr={"55px"}
+      pl={"55px"} 
+      mb={"20px"} >
       <SearchBar perFiltered={perFiltered} />
+      </Flex>
+      
 
-      <div className="btn-group mb-3">
-        <button className="btn btn-primary" onClick={() => setNewTask(true)}>
-          Nueva tarea
-        </button>
-
-        <button className="btn btn-info" onClick={() => setFiltered(tasks)}>
+      <div >
+        <Button color="black" background="white"  borderColor="cyan.400" colorScheme="cyan" onClick={() => setFiltered(tasks)}>
           Todas
-        </button>
-        <button
+        </Button>
+        <Button
           className="btn btn-warning"
           onClick={() => {
             const arr = tasks.filter((arr) => arr.status === false);
             setFiltered(arr);
           }}
-        >
+          >
           Pendientes
-        </button>
+        </Button>
 
-        <button
+        <Button
           className="btn btn-success"
           onClick={() => {
             const arr = tasks.filter((arr) => arr.status === true);
@@ -144,7 +157,7 @@ const index = ({ data }) => {
           }}
         >
           Realizadas
-        </button>
+        </Button>
       </div>
       {newTask && (
         <NewTaskCard
@@ -171,7 +184,11 @@ const index = ({ data }) => {
             handleDelete={handleDelete}
           />
         ))}
-    </div>
+
+      <Button onClick={() => setNewTask(true)}>Nueva tarea</Button>
+</Flex>
+    </Box>
+    </Flex>
   );
 };
 
