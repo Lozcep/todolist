@@ -135,12 +135,13 @@ const index = ({ data }) => {
       </Flex>
       
 
-      <div >
+      <Flex
+      width="40%"
+      justify="space-between" >
         <Button color="black" background="white"  borderColor="cyan.400" colorScheme="cyan" onClick={() => setFiltered(tasks)}>
           Todas
         </Button>
-        <Button
-          className="btn btn-warning"
+        <Button color="black" background="white"  borderColor="yellow.200" colorScheme="yellow"
           onClick={() => {
             const arr = tasks.filter((arr) => arr.status === false);
             setFiltered(arr);
@@ -149,8 +150,7 @@ const index = ({ data }) => {
           Pendientes
         </Button>
 
-        <Button
-          className="btn btn-success"
+        <Button color="black" background="white"  borderColor="green.300" colorScheme="green"
           onClick={() => {
             const arr = tasks.filter((arr) => arr.status === true);
             setFiltered(arr);
@@ -158,7 +158,7 @@ const index = ({ data }) => {
         >
           Realizadas
         </Button>
-      </div>
+      </Flex>
       {newTask && (
         <NewTaskCard
           setNewTask={setNewTask}
